@@ -126,10 +126,19 @@ var app = function(app) {
         var saveBut = p.page2.tabs.buttons[2];
         saveBut.color = frame.green;
         saveBut.text = "SAVE";
+        function getPhoneGapPath() {
+           var path = window.location.pathname;
+           path = path.substr( path, path.length - 10 );
+           return path;
+           // android add 'file://'
+        };
         saveBut.on("click", function() {
             // if (p.content2.numChildren < 1) return;
-            // p.loader.save(p.content2);
-            zgo("http://danzen.com","_blank");
+            // // p.loader.save(p.content2);
+            var path = getPhoneGapPath();
+            p.content2.cache(0, 0, p.content2.width, p.content2.height);
+            zgo(p.content2.cacheCanvas.toDataURL('image/jpeg').replace("image/jpeg", "image/octet-stream"), "_blank");        
+            p.content2.uncache();
         });
 
 
