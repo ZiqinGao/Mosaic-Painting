@@ -51,7 +51,7 @@
     <plugin name="cordova-plugin-media-capture"       source="npm"  >
       <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Allow the app to access your photos" />
     </plugin>
-    <plugin name="org.apache.cordova.inappbrowser" ></plugin>
+<!--     <plugin name="org.apache.cordova.inappbrowser" ></plugin> -->
 <!-- 
     <gap:plugin name="org.apache.cordova.inappbrowser" /> -->
 <!--     <gap:plugin name="org.apache.cordova.inappbrowser" version="0.2.4" /> -->
