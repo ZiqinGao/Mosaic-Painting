@@ -13,7 +13,8 @@ var app = function(app) {
                 p.loader.removeFrom(stage);
 
                 stage.update();
-            }
+            }            
+
         })
 
         var hotSpots = new zim.HotSpots([
@@ -38,6 +39,13 @@ var app = function(app) {
 
             var pic = e.bitmap;
             pic.cache(0,0,pic.getBounds().width,pic.getBounds().height);
+
+            // if (pic.on.loaded == true){
+                
+            //     p.loader.removeFrom(stage);
+
+            //     stage.update();
+            // } 
 
             pic.on("pressmove", function(){
 
@@ -143,14 +151,19 @@ var app = function(app) {
             p.mosaic.removeAllChildren();
             p.content2.removeChildAt(0);
             //p.content2.visible = false;
- //////////////////////////////////////////////I'm try to add the loader when the pic has been delete.
- /////////////////////////////////////////////but it dosen't work
             p.loader.addTo(stage);
 
 
             stage.update();
         });
         p.content2.visible = true;
+
+
+
+/////////////////////////////"back" button color
+        var backBut = p.page2.tabs.buttons[0];
+        backBut.color = frame.yellow;
+
 
 
 
