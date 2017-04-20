@@ -176,11 +176,11 @@ var app = function(app) {
         // // SIZE the brush
         // // Make size controls with a divider backing and a Label
         // // Create an event that will set the scale of the content item to the Slider value
-        // p.slider.on("change", function(){
+        p.slider.on("change", function(){
         //     // if (p.brush) p.brush.clone().scale(p.slider.currentValue);
         //      if (p.brush) p.brush.scale(p.slider.currentValue);
-        //     stage.update();
-        // });
+             stage.update();
+        });
 
 
 

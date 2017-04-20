@@ -12,7 +12,7 @@
 <!-- as of ZIM 4.3.0 load createjs namespace first -->
 <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
 <script>var zon = true; // true for comments from zim code</script>
-<script src="https://d309knd7es5f10.cloudfront.net/zim_4.9.1.js"></script><!-- add _doc to see code -->
+<script src="https://d309knd7es5f10.cloudfront.net/zim_5.js"></script><!-- add _doc to see code -->
 <!-- use zimjs.com/code/distill for minified individual functions! -->
 
 <!-- <script src="code/page2.js"></script> -->
@@ -39,6 +39,9 @@ frame.on("ready", function() {
 	var stage = frame.stage;
 	var stageW = frame.width;
 	var stageH = frame.height;
+
+	zim.OPTIMIZE = true;
+	zim.Ticker.update = true;
 
 	frame.loadAssets(["pic.jpg","icon-40@2x.png"], "assets/");
 	frame.on("complete", function() {

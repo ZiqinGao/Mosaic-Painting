@@ -56,7 +56,7 @@ var app = function(app) {
         {object:buttons, marginTop:5, maxWidth:100, minHeight:10,}
             ],
             lastMargin:3,
-            regionShape:new zim.Shape(),
+            //regionShape:new zim.Shape(),
             scalingObject:stage
         });
         layoutManager.add(layout);
@@ -258,8 +258,8 @@ var app = function(app) {
             holder:page2,
             regions:[
         {object:header, marginTop:3, maxWidth:80, height:8, align:"center", valign:"top"},
-        {object:content2, marginTop:3, maxWidth:100, backgroundColor:frame.grey},
-        {object:buttons2, marginTop:0, maxWidth:100, minHeight:15,}
+        {object:content2, marginTop:2, maxWidth:100, backgroundColor:frame.grey},
+        {object:buttons2, marginTop:1, maxWidth:100, minHeight:13,}
             ],
             lastMargin:3,
             regionShape:new zim.Shape(),
