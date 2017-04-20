@@ -124,11 +124,12 @@ var app = function(app) {
         // SAVE BUTTON
         // The Loader comes with a save() method to save a picture in the browser
         var saveBut = p.page2.tabs.buttons[2];
-        saveBut.color = frame.green;
+        saveBut.color = frame.blue;
         saveBut.text = "SAVE";
         saveBut.on("click", function() {
-            if (p.content2.numChildren < 1) return;
-            p.loader.save(p.content2);
+            // if (p.content2.numChildren < 1) return;
+            // p.loader.save(p.content2);
+            zgo("http://danzen.com","_blank");
         });
 
 
