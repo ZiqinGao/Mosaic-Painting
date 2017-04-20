@@ -21,7 +21,7 @@ var app = function(app) {
             // introdution.y-=8;
 
         var introduction = p.introduction = new zim.Label({
-            text:"Welcome come to \"mosaic painting\", here you can use 7 different kind of brush to create your mosaic painting easly.Before start painting, your need to upload orangal picture. Then you can choose a brush to overdraw on the picture.You can control the first 3 brushes size with the silder which is on the left side. Have Fun! ",
+            text:"Welcome to \"mosaic painting\", here you can use 7 different kinds of brushes to create your mosaic painting. Before you start painting, you need to upload an original picture. Then you can choose a brush to augment the picture. You can control brush sizes with the silder. Have Fun! ",
             align:"center",
             valign:"center",
             size:30,
