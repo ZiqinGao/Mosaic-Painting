@@ -52,6 +52,8 @@
       <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Allow the app to access your photos" />
     </plugin>
 
+
+    <gap:plugin name="org.apache.cordova.inappbrowser" />
     <!-- Core plugins -->
 <!--     <plugin name="cordova-plugin-battery-status" />
     <plugin name="cordova-plugin-camera" />

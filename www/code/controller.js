@@ -13,7 +13,7 @@ var app = function(app) {
         })
 
         var hotSpots = new zim.HotSpots([
-{page:p.page1, rect:p.page1.tabs.buttons[1], call:function(){pages.go(p.page2, "down");}},
+{page:p.page1, rect:p.page1.tabs.buttons[0], call:function(){pages.go(p.page2, "down");}},
 {page:p.page2, rect:p.page2.tabs.buttons[0], call:function(){pages.go(p.page1, "up");}},
           ]);
 
@@ -26,10 +26,11 @@ var app = function(app) {
         // })
 
         p.loader.on("loaded",function(e){
-            zim.loop(e.bitmaps, function(bitmap){
-                bitmap.scaleTo(p.content2,100,100).centerReg(p.content2, true, 0); // under mosaic
-            });
+            //zim.loop(e.bitmaps, function(bitmap){
+                e.bitmap.scaleTo(p.content2,100,100).centerReg(p.content2, true, 0); // under mosaic
+            //});
             p.loader.removeFrom(p.loader.parent);
+            p.content2.outline();
 
             var pic = e.bitmap;
             pic.cache(0,0,pic.getBounds().width,pic.getBounds().height);
@@ -59,20 +60,23 @@ var app = function(app) {
                             draw.graphics.f(color).p("ANcUnI6yACIoV5eIVrvzIVsPvg");
                         } else if(p.brush.custom == 2){
                             zog("custom2");
-                            var draw = new zim.Shape(30,30).scale(.1).addTo(p.mosaic).pos(point.x, point.y);
+                            var draw = new zim.Shape(30,30).scale(.2).addTo(p.mosaic).pos(point.x, point.y);
                             draw.graphics.f(color).p("AgLnFQhwhTiJgeQkRg+h9EHQiAEQFvFvQC4C4DRCCQDZh0DEivQGIlbhwklQhxkoknBAQhcAThjA2g");
                         }  else if(p.brush.custom == 3){
                             zog("custom2");
-                            var draw = new zim.Shape(30,30).scale(.1).addTo(p.mosaic).pos(point.x, point.y);
+                            var draw = new zim.Shape(30,30).scale(.12).addTo(p.mosaic).pos(point.x, point.y);
                             draw.graphics.f(color).p("AFFF+QAuCaAKA0QAmC1gnBJQgwBYhGAyQhjBHiIgMQhBgFhGgjQhPgngpg6Qgqg6gShTQgPhHAAhgQAAgpAVg7QAahAAJgcIglA1QgpA5haBaQiICJhGAIQiEAQhggqQg7gagyg1Qg6g+gUh5QgRhtAWhOQAliDDJhCQBlgiBigJQgLgDhPgIQhVgIg6gMQjEgmgrhtQgbhDAOiHQAPiDAkgwQAzhEAogfQBGg1BfgIQCCgJCqCKQBVBFA2BAQgFgKgHgQQgJgSgLghQgFgRgDgMQgGgRgDgSQgHghgCgVIgCgDIgDhEQgBgiAIgwIAAgCQALg4AUgqQA3h5BogeIAYgGQBPgOBcAGQBxAIA4AoQCPBngeDfQgPBvgsBgQABgBApg5QA1hCA5gzQC3ikCyAlQBXASBUBbQA/BEAjBIQAEAIAEANQAgBdhRBuQgdAngtAmQgwAmgaAPIhAAkIgDABQgVAKgjAOQgVAIgRAFQhCAcgKADQgKADC0AOQDEAVAxAjQBPA7ANBzQANBrgvBuQgvBxhUA8QheBDhrgZQjhg1hZhaQgZgagXgmQgTgggKgHg");
                         } else if(p.brush.custom == 4){
                             zog("custom2");
-                            var draw = new zim.Shape(30,30).scale(.1).addTo(p.mosaic).pos(point.x, point.y);
+                            var draw = new zim.Shape(30,30).scale(.12).addTo(p.mosaic).pos(point.x, point.y);
                             draw.graphics.f(color).p("AtZAAINZyhINaShItaSig");
                         } else {
                             var draw = p.brush.clone().addTo(p.mosaic,zim.rand(p.mosaic.numChildren - 1)).pos(point.x, point.y);
                             draw.color = color;
-                        }
+                        } 
+
+                        draw.scale(draw.scaleX*p.slider.currentValue);
+
                     }
 
 
@@ -120,7 +124,7 @@ var app = function(app) {
         // SAVE BUTTON
         // The Loader comes with a save() method to save a picture in the browser
         var saveBut = p.page2.tabs.buttons[2];
-        saveBut.color = frame.purple;
+        saveBut.color = frame.green;
         saveBut.text = "SAVE";
         saveBut.on("click", function() {
             if (p.content2.numChildren < 1) return;
@@ -137,6 +141,7 @@ var app = function(app) {
         // but if the user goes to another item then the delete is final and the layer is removed
         // This lets us fit in a CheckBox like the others, and provides a temporary way to undo
         var deleteBox = p.page2.tabs.buttons[1];
+        deleteBox.color = frame.purple;
         deleteBox.label.color = "#880000";
 
         deleteBox.on("click", function() {
@@ -144,7 +149,9 @@ var app = function(app) {
             // once another item is selected we will permanantly delete the layer
             // we need to handle permanetly deleting in the setItem()
 
-            p.content2.visible = false;
+            p.mosaic.removeAllChildren();
+            p.content2.removeChildAt(0);
+            //p.content2.visible = false;
  //////////////////////////////////////////////I'm try to add the loader when the pic has been delete.
  /////////////////////////////////////////////but it dosen't work
             p.loader.addTo(stage);
@@ -156,14 +163,14 @@ var app = function(app) {
 
 
 
-        // SIZE the brush
-        // Make size controls with a divider backing and a Label
-        // Create an event that will set the scale of the content item to the Slider value
-        p.slider.on("change", function(){
-            // if (p.brush) p.brush.clone().scale(p.slider.currentValue);
-             if (p.brush) p.brush.scale(p.slider.currentValue);
-            stage.update();
-        });
+        // // SIZE the brush
+        // // Make size controls with a divider backing and a Label
+        // // Create an event that will set the scale of the content item to the Slider value
+        // p.slider.on("change", function(){
+        //     // if (p.brush) p.brush.clone().scale(p.slider.currentValue);
+        //      if (p.brush) p.brush.scale(p.slider.currentValue);
+        //     stage.update();
+        // });
 
 
 

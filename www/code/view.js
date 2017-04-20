@@ -13,19 +13,36 @@ var app = function(app) {
             .addTo(page1);
 
 
+
+
         var content = new zim.Rectangle(700,600,frame.tin)
             .addTo(page1);
             // var introdution = new zim.Label("here is the introdution for how to use it", 10, "Courier", "white");
             // introdution.y-=8;
 
+        var introduction = p.introduction = new zim.Label({
+            text:"Welcome come to \"mosaic painting\", here you can use 7 different kind of brush to create your mosaic painting easly.Before start painting, your need to upload orangal picture. Then you can choose a brush to overdraw on the picture.You can control the first 3 brushes size with the silder which is on the left side. Have Fun! ",
+            align:"center",
+            valign:"center",
+            size:30,
+            color:"white",
+            lineHeight: 50,
+            lineWidth: 600 //The width of the text line
+        }).addTo(content);
+
+        introduction.x += 350; //adds to the X
+        introduction.y += 250; // adds to the y
+
         var buttons = new zim.Container()
             .addTo(page1);
         var tabs = page1.tabs = new zim.Tabs({
             width:430,
-            tabs:["ONE", "TWO", "THREE"]
-            // tabs:["Try it!"]
+            color:"yellowgreen",
+            // tabs:["ONE", "TWO", "THREE"]
+            tabs:["START"],
+            currentEnabled: true
         }).addTo(buttons);
-        zog(tabs.buttons[0].text)
+        zog(tabs.buttons[0].text);
 
 
         // LAYOUT
@@ -63,7 +80,7 @@ var app = function(app) {
         var tabs = p.page2.tabs = new zim.Tabs({
             width:210,
             height:25,
-            tabs:["Back","clearn","save"],
+            tabs:["BACK","DELETE","SAVE"],
             currentEnabled:true
         }).addTo(header);
         tabs.selectedIndex = -1;
@@ -73,6 +90,7 @@ var app = function(app) {
 
         var content2 = p.content2 = new zim.Container(1024,768)
             .addTo(page2);
+
 
         var mosaic = p.mosaic = new zim.Container()
             .addTo(content2);
@@ -95,41 +113,61 @@ var app = function(app) {
 
 
 
-        var buttons2 = new zim.Container(300,60)
+        var buttons2 = new zim.Container(300,80)
             .addTo(page2);
 
+////brush size control
+        var slider = p.slider =  new zim.Slider({
+            min:.1,
+            max:5,
+            // vertical:true,
+            inside:true,
+            barLength:120,
+            button:new zim.Button({
+                width:20, height:20,
+                color:frame.yellow,
+                rollColor:frame.green,
+                corner:8,
+                label:""
+            })
+        });
 
+            slider.addTo(buttons2);
+            slider.currentValue = 1;
+            slider.scale(1);
+            slider.x = 80;
+            slider.y = 20;
 
  ///////////////////////////////////////////////////create brushes
 
         var brushes = p.brushes = new zim.Container();
-            brushes.addTo(buttons2);
+            brushes.addTo(buttons2).mov(0,30);
 
 
 
-        var circle = new zim.Circle(15,"blue");
-        var triangle = new zim.Triangle(30,30,30,"pink");
-        var rectangle = new zim.Rectangle(25,25,"red");
+        var circle = new zim.Circle(15,"red");
+        var triangle = new zim.Triangle(30,30,30,"yellow");
+        var rectangle = new zim.Rectangle(25,25,"blue");
 
         var custom1 = new zim.Shape(30,30)
             .scale(.1);
         custom1.custom = 1;
-        custom1.graphics.f("green").p("ANcUnI6yACIoV5eIVrvzIVsPvg");
+        custom1.graphics.f("yellowgreen").p("ANcUnI6yACIoV5eIVrvzIVsPvg");
 
 
         var custom2 = new zim.Shape(30,30)
-            .scale(.2);
+            .scale(.22);
         custom2.custom = 2;
-        custom2.graphics.f("red").p("AgLnFQhwhTiJgeQkRg+h9EHQiAEQFvFvQC4C4DRCCQDZh0DEivQGIlbhwklQhxkoknBAQhcAThjA2g");
+        custom2.graphics.f(frame.purple).p("AgLnFQhwhTiJgeQkRg+h9EHQiAEQFvFvQC4C4DRCCQDZh0DEivQGIlbhwklQhxkoknBAQhcAThjA2g");
 
 
         var custom3 = new zim.Shape(30,30)
-            .scale(.1);
+            .scale(.12);
         custom3.custom = 3;
-        custom3.graphics.f("green").p("AFFF+QAuCaAKA0QAmC1gnBJQgwBYhGAyQhjBHiIgMQhBgFhGgjQhPgngpg6Qgqg6gShTQgPhHAAhgQAAgpAVg7QAahAAJgcIglA1QgpA5haBaQiICJhGAIQiEAQhggqQg7gagyg1Qg6g+gUh5QgRhtAWhOQAliDDJhCQBlgiBigJQgLgDhPgIQhVgIg6gMQjEgmgrhtQgbhDAOiHQAPiDAkgwQAzhEAogfQBGg1BfgIQCCgJCqCKQBVBFA2BAQgFgKgHgQQgJgSgLghQgFgRgDgMQgGgRgDgSQgHghgCgVIgCgDIgDhEQgBgiAIgwIAAgCQALg4AUgqQA3h5BogeIAYgGQBPgOBcAGQBxAIA4AoQCPBngeDfQgPBvgsBgQABgBApg5QA1hCA5gzQC3ikCyAlQBXASBUBbQA/BEAjBIQAEAIAEANQAgBdhRBuQgdAngtAmQgwAmgaAPIhAAkIgDABQgVAKgjAOQgVAIgRAFQhCAcgKADQgKADC0AOQDEAVAxAjQBPA7ANBzQANBrgvBuQgvBxhUA8QheBDhrgZQjhg1hZhaQgZgagXgmQgTgggKgHg");
+        custom3.graphics.f("orange").p("AFFF+QAuCaAKA0QAmC1gnBJQgwBYhGAyQhjBHiIgMQhBgFhGgjQhPgngpg6Qgqg6gShTQgPhHAAhgQAAgpAVg7QAahAAJgcIglA1QgpA5haBaQiICJhGAIQiEAQhggqQg7gagyg1Qg6g+gUh5QgRhtAWhOQAliDDJhCQBlgiBigJQgLgDhPgIQhVgIg6gMQjEgmgrhtQgbhDAOiHQAPiDAkgwQAzhEAogfQBGg1BfgIQCCgJCqCKQBVBFA2BAQgFgKgHgQQgJgSgLghQgFgRgDgMQgGgRgDgSQgHghgCgVIgCgDIgDhEQgBgiAIgwIAAgCQALg4AUgqQA3h5BogeIAYgGQBPgOBcAGQBxAIA4AoQCPBngeDfQgPBvgsBgQABgBApg5QA1hCA5gzQC3ikCyAlQBXASBUBbQA/BEAjBIQAEAIAEANQAgBdhRBuQgdAngtAmQgwAmgaAPIhAAkIgDABQgVAKgjAOQgVAIgRAFQhCAcgKADQgKADC0AOQDEAVAxAjQBPA7ANBzQANBrgvBuQgvBxhUA8QheBDhrgZQjhg1hZhaQgZgagXgmQgTgggKgHg");
 
         var custom4 = new zim.Shape(30,30)
-            .scale(.1);
+            .scale(.12);
         custom4.custom = 4;
         custom4.graphics.f("green").p("AtZAAINZyhINaShItaSig");
 
@@ -139,31 +177,31 @@ var app = function(app) {
             brush.addTo(brushes);
 
 
-            circle.x = 0;
+            circle.x = 30;
             circle.y = 30;
 
-            triangle.x = 50;
+            triangle.x = 75;
             triangle.y =30;
 
             rectangle.centerReg();
-            rectangle.x = 100;
+            rectangle.x = 120;
             rectangle.y = 30;
 
             custom1.centerReg();
-            custom1.x = 150;
+            custom1.x = 160;
             custom1.y = 30;
 
 
             custom2.centerReg();
-            custom2.x = 200;
-            custom2.y = 30;
+            custom2.x = 205;
+            custom2.y = 32;
 
             custom3.centerReg();
-            custom3.x = 250;
+            custom3.x = 245;
             custom3.y = 30;
 
             custom4.centerReg();
-            custom4.x = 300;
+            custom4.x = 280;
             custom4.y = 30;
 
         });
@@ -209,27 +247,7 @@ var app = function(app) {
                 p.brush = custom4;
             });
 
-////brush size control
-        var slider = p.slider =  new zim.Slider({
-            min:.1,
-            max:5,
-            vertical:true,
-            inside:true,
-            barLength:120,
-            button:new zim.Button({
-                width:20, height:20,
-                color:frame.yellow,
-                rollColor:frame.green,
-                corner:8,
-                label:""
-            })
-        });
 
-            slider.addTo(content2);
-            slider.currentValue = 1;
-            slider.scale(1.5);
-            slider.x = -80;
-            slider.y = 300;
 
 
 
@@ -239,16 +257,16 @@ var app = function(app) {
         var layout2 = new zim.Layout({
             holder:page2,
             regions:[
-        {object:header, marginTop:5, maxWidth:80, height:8, align:"center", valign:"top"},
-        {object:content2, marginTop:5, maxWidth:100, backgroundColor:frame.grey},
-        {object:buttons2, marginTop:5, maxWidth:100, minHeight:10,}
+        {object:header, marginTop:3, maxWidth:80, height:8, align:"center", valign:"top"},
+        {object:content2, marginTop:3, maxWidth:100, backgroundColor:frame.grey},
+        {object:buttons2, marginTop:0, maxWidth:100, minHeight:15,}
             ],
             lastMargin:3,
             regionShape:new zim.Shape(),
             scalingObject:stage
         });
         layoutManager.add(layout2);
-        buttons2.outline()
+        // buttons2.outline()
         return p;
 
     }
