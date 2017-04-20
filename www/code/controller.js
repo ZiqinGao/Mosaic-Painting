@@ -9,6 +9,10 @@ var app = function(app) {
                 p.loader.centerReg(stage);
 
                 stage.update();
+            } else if (pages.page.name == "page1"){
+                p.loader.removeFrom(stage);
+
+                stage.update();
             }
         })
 
@@ -30,7 +34,7 @@ var app = function(app) {
                 e.bitmap.scaleTo(p.content2,100,100).centerReg(p.content2, true, 0); // under mosaic
             //});
             p.loader.removeFrom(p.loader.parent);
-            p.content2.outline();
+            // p.content2.outline();
 
             var pic = e.bitmap;
             pic.cache(0,0,pic.getBounds().width,pic.getBounds().height);
@@ -86,30 +90,7 @@ var app = function(app) {
 
                 };
                 pickcolor();
-
-
-
-                //////get brush
-                			// function getbrush(){
-
-                			// }
-
-
-
-                //use the brush to draw
-
-                	  //       function draw(x, y, pickcolor) {
-                	  //       	zog(p.brushes);
-                	  //               p.brush.fillStyle = color;
-                	  //               p.brush.beginPath();
-                	  //               p.brush.arc(stage.mouseX, stage.mouseY, 0, 2*Math.PI);
-                	  //               p.brush.fill();
-                	  //           zog(color)
-                	  //           };
-                	  //       draw();
-                			// draw(x, y + img.height + 20, color);
-
-                    	});
+        	});
 
 
 
@@ -152,7 +133,7 @@ var app = function(app) {
         // This lets us fit in a CheckBox like the others, and provides a temporary way to undo
         var deleteBox = p.page2.tabs.buttons[1];
         deleteBox.color = frame.purple;
-        deleteBox.label.color = "#880000";
+        // deleteBox.label.color = "#880000";
 
         deleteBox.on("click", function() {
             // temporarily remove the item but give user a chance to undo delete
@@ -181,6 +162,7 @@ var app = function(app) {
         //      if (p.brush) p.brush.scale(p.slider.currentValue);
              stage.update();
         });
+
 
 
 
