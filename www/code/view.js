@@ -129,7 +129,7 @@ var app = function(app) {
                 rollColor:frame.green,
                 corner:8,
                 label:""
-            })
+            }).expand(20,6)
         });
 
             slider.addTo(buttons2);
@@ -262,7 +262,7 @@ var app = function(app) {
         {object:buttons2, marginTop:1, maxWidth:100, minHeight:13,}
             ],
             lastMargin:3,
-            regionShape:new zim.Shape(),
+            // regionShape:new zim.Shape(),
             scalingObject:stage
         });
         layoutManager.add(layout2);
