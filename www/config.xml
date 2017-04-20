@@ -51,9 +51,10 @@
     <plugin name="cordova-plugin-media-capture"       source="npm"  >
       <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Allow the app to access your photos" />
     </plugin>
-
-
-    <gap:plugin name="org.apache.cordova.inappbrowser" />
+    <plugin name="org.apache.cordova.inappbrowser" ></plugin>
+<!-- 
+    <gap:plugin name="org.apache.cordova.inappbrowser" /> -->
+<!--     <gap:plugin name="org.apache.cordova.inappbrowser" version="0.2.4" /> -->
     <!-- Core plugins -->
 <!--     <plugin name="cordova-plugin-battery-status" />
     <plugin name="cordova-plugin-camera" />
