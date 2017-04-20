@@ -122,10 +122,10 @@ var app = function(app) {
             max:5,
             // vertical:true,
             inside:true,
-            barLength:120,
+            barLength:260,
             button:new zim.Button({
-                width:20, height:20,
-                color:frame.yellow,
+                width:15, height:15,
+                color:frame.grey,
                 rollColor:frame.green,
                 corner:8,
                 label:""
@@ -135,7 +135,7 @@ var app = function(app) {
             slider.addTo(buttons2);
             slider.currentValue = 1;
             slider.scale(1);
-            slider.x = 80;
+            slider.x = 20;
             slider.y = 20;
 
  ///////////////////////////////////////////////////create brushes
