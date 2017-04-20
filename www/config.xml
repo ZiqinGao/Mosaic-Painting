@@ -44,6 +44,14 @@
 
     <!-- Plugins -->
 
+    <plugin name="cordova-plugin-camera"              source="npm" >
+      <variable name="CAMERA_USAGE_DESCRIPTION" value="Allow the app to use your camera" />
+      <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Allow the app to access your photos" />
+    </plugin>
+    <plugin name="cordova-plugin-media-capture"       source="npm"  >
+      <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Allow the app to access your photos" />
+    </plugin>
+
     <!-- Core plugins -->
 <!--     <plugin name="cordova-plugin-battery-status" />
     <plugin name="cordova-plugin-camera" />
