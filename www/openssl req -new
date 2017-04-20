@@ -1,0 +1,31 @@
+ openssl req -new -key mykey.key -out CertificateSigningRequest.certSigningRequest  -subj "/emailAddress=gaoziqin2016@gmail.com, CN=Ziqin Gao, C=CA"
+
+set OPENSSL_CONF=c:/OpenSSL-Win32/bin/openssl.cfg
+
+
+
+
+
+C:\OpenSSL-Win32\bin> set OPENSSL_CONF=c:/OpenSSL-Win64/bin/openssl.cfg
+
+C:\OpenSSL-Win32\bin>   set RANDFILE=.rnd
+
+C:\OpenSSL-Win32\bin>openssl genrsa -out mykey.key 2048
+Generating RSA private key, 2048 bit long modulus
+.....................................................................+++
+...............+++
+e is 65537 (0x010001)
+
+C:\OpenSSL-Win32\bin> openssl req -new -key mykey.key -out CertificateSigningRequest.certSigningRequest  -subj "/emailAddress=gaoziqin2016@gmail.com, CN=Ziqin Gao, C=CA"
+Can't open c:/OpenSSL-Win64/bin/openssl.cfg for reading, No such file or directory
+9120:error:02001003:system library:fopen:No such process:crypto\bio\bss_file.c:74:fopen('c:/OpenSSL-Win64/bin/openssl.cfg','r')
+9120:error:2006D080:BIO routines:BIO_new_file:no such file:crypto\bio\bss_file.c:81:
+unable to find 'distinguished_name' in config
+problems making Certificate Request
+9120:error:0E06D06A:configuration file routines:NCONF_get_string:no conf or environment variable:crypto\conf\conf_lib.c:272:
+
+C:\OpenSSL-Win32\bin>set OPENSSL_CONF=c:/OpenSSL-Win32/bin/openssl.cfg
+
+C:\OpenSSL-Win32\bin>openssl req -new -key mykey.key -out CertificateSigningRequest.certSigningRequest  -subj "/emailAddress=gaoziqin2016@gmail.com, CN=Ziqin Gao, C=CA"
+
+C:\OpenSSL-Win32\bin>

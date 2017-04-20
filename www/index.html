@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>final page2</title>
+
+<!-- Welcome to ZIM at http://zimjs.com - Code Interactive Media Pizzazz! 				-->
+<!-- ZIM runs on the HTML Canvas powered by JavaScript and CreateJS http://createjs.com -->
+<!-- Founded by Inventor Dan Zen - http://danzen.com - Canadian New Media Award Winner 	-->
+<!-- ZIM is free to use. You can donate to help improve ZIM at http://zimjs.com/donate 	-->
+
+<!-- as of ZIM 4.3.0 load createjs namespace first -->
+<script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+<script>var zon = true; // true for comments from zim code</script>
+<script src="https://d309knd7es5f10.cloudfront.net/zim_4.9.1.js"></script><!-- add _doc to see code -->
+<!-- use zimjs.com/code/distill for minified individual functions! -->
+
+<!-- <script src="code/page2.js"></script> -->
+<script src="code/view.js"></script>
+<script src="code/controller.js"></script>
+<link rel="stylesheet" href="code/page2css.css" />
+<script>
+
+// SCALING OPTIONS
+// scaling can have values as follows with full being the default
+// "fit"		sets canvas and stage to dimensions and scales to fit inside window size
+// "outside"	sets canvas and stage to dimensions and scales to fit outside window size
+// "full"		sets stage to window size with no scaling
+// "tagID"		add canvas to HTML tag of ID - set to dimensions if provided - no scaling
+
+var scaling = "full"; // makes stage the window size but does not scale content
+var width = null;
+var height = null;
+var color = "black";
+var frame = new zim.Frame(scaling, width, height, color); // see docs for more options and info
+frame.on("ready", function() {
+	zog("ready from ZIM Frame");
+
+	var stage = frame.stage;
+	var stageW = frame.width;
+	var stageH = frame.height;
+
+	frame.loadAssets(["pic.jpg","icon-40@2x.png"], "assets/");
+	frame.on("complete", function() {
+
+		var layoutManager = new zim.LayoutManager();
+
+		var p = app.makePages(frame, stage, stageW, stageH, layoutManager);
+
+		/////////////////////////////
+		// PAGES
+
+		var pages = new zim.Pages({
+			holder:stage,
+			pages:[
+				{page:p.page1, swipe:[null,null,p.page2,p.page2]},
+				{page:p.page2, swipe:[null,null,p.page1,p.page1]}
+			],
+			transition:"slide",
+	   		speed:1000
+		});
+		pages.addTo(stage);
+
+		var c = app.makeController(stage, p, pages);
+
+
+
+
+
+	
+
+
+
+
+
+///////////////////Hi Dan, I'm trying to replace the pic to the new one which is loader by user,
+   ////////////////but no matter how hard I tried it, I can't get it
+//////////////////inorder not mass up you, I deleted those test code
+	// var pic = p.content2("currentItem").alp(.2);
+
+
+
+
+
+
+
+
+
+		var rect = new zim.Rectangle(100,50,frame.blue)
+			// .addTo(stage);
+
+		//var grid = new zim.Grid(stage);
+
+
+
+
+		resize();
+////resize fram
+		frame.on("resize", resize);
+		function resize() {
+			layoutManager.resize();
+			p.loader.centerReg(stage,false);
+			p.loader.resize();
+
+			stageW = frame.width;
+			stageH = frame.height;
+			// can redraw things at different sizes or use scaling here
+
+			// pic.width = stageW*.5;
+			// pic.x = stageW*.1;
+			// pic.y = stageH*.1;
+
+			// pic
+			// 	.siz(stageW*.5)
+			// 	.pos(stageW*.1, stageH*.1)
+			// 	.centerReg(stage)
+			// 	.scaleTo(stage, 50)
+
+
+			rect
+				.siz(stageW*.2)
+				.pos(
+					stageW*.7,
+					stageH-rect.height
+				);
+
+			//grid.resize();
+
+			stage.update();
+		}; // end of resize
+
+
+
+
+
+		stage.update();
+
+	}); // end of assets
+
+}, null, true); // end of ready - only run once (true)
+
+</script>
+</head>
+
+<body>
+<!-- canvas with id="myCanvas" is made by zim Frame -->
+</body>
+</html>
