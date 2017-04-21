@@ -6,10 +6,10 @@
         id        = "com.sheridan.imm.collective4"
         version   = "1.0.0">
 
-    <name>my game</name>
+    <name>Mosaic-Painting</name>
 
     <description>
-        my game
+        Mosaic-Painting
     </description>
 
     <author href="http://phonegap.com" email="support@phonegap.com">

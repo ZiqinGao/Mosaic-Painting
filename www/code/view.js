@@ -268,7 +268,6 @@ var app = function(app) {
         layoutManager.add(layout2);
         // buttons2.outline()
         return p;
-
     }
 
 
