@@ -91,9 +91,13 @@ var app = function(app) {
         var content2 = p.content2 = new zim.Container(1024,768)
             .addTo(page2);
 
-
         var mosaic = p.mosaic = new zim.Container()
             .addTo(content2);
+
+        mosaic.cache(0, 0, stageW, stageH);    
+        var mosaicCache = p.mosaicCache = new zim.Bitmap(mosaic.cacheCanvas).addTo(content2);
+        mosaic.uncache();
+       
 
 
         var loader = p.loader = new zim.Loader({

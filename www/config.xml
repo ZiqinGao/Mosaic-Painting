@@ -42,7 +42,6 @@
         <preference name="phonegap-version"       value="3.5.0" />
     -->
 
-
     <splash src="splash.png" width="320" height="480" />
     <platform name="ios">
         <splash src="splash/portrait/ios/Default.png" width="320" height="480" />
@@ -73,6 +72,7 @@
     <platform name="winphone">
         <splash src="splash/portrait/winphone/SplashScreenImage.jpg" width="480" height="800" />
     </platform>
+
 
     <!-- Plugins -->
 
