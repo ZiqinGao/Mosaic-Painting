@@ -5,14 +5,22 @@ var app = function(app) {
         // pages.on("page", function(e) {
         pages.on("pagetransitioned", function(e) {
             zog(pages.page.name);
-            if (pages.page.name == "page2"){
+            if (!p.content2.contains(p.pic) && pages.page.name == "page2"){
+                
                 p.loader.centerReg(stage);
 
                 stage.update();
-            } else if (pages.page.name == "page1"){
-                p.loader.removeFrom(stage);
+            }      
 
-                stage.update();
+        })
+         pages.on("page", function(e) {
+            zog(pages.page.name);
+            
+            if (pages.page.name == "page1"){
+            //     p.loader.animate({obj:{alpha:0},call:function(){
+                    p.loader.removeFrom(stage);
+            //    }});              
+                
             }            
 
         })
@@ -32,13 +40,16 @@ var app = function(app) {
 
         p.loader.on("loaded",function(e){
             //zim.loop(e.bitmaps, function(bitmap){
-                e.bitmap.scaleTo(p.content2,100,100).centerReg(p.content2, true, 0); // under mosaic
+            var pic = p.pic = e.bitmap;
+            pic.scaleTo(p.content2,100,100).centerReg(p.content2, true, 0); // under mosaic
             //});
+            p.mask.scaleTo(e.bitmap,100,100,"both").centerReg(p.content2, true, 0);
+            p.mosaic.setMask(p.mask);
             p.loader.removeFrom(p.loader.parent);
             // p.content2.outline();
 
-            var pic = e.bitmap;
             pic.cache(0,0,pic.getBounds().width,pic.getBounds().height);
+            
 
             // if (pic.on.loaded == true){
                 
@@ -63,7 +74,7 @@ var app = function(app) {
 
 
                     var point = pic.parent.globalToLocal(x,y);
-                    if (zim.rand() < .2){
+                    if (zim.rand() < .2 && p.brush){
                     // var circle = new zim.Circle(10,color).addTo(stage).pos(stage.mouseX,stage.mouseY);
                         // var draw = p.brush.clone().addTo(mosaic,zim.rand(mosaic.numChildren - 1)).pos(stage.mouseX,stage.mouseY);
                         if (p.brush.custom == 1) {
@@ -149,7 +160,7 @@ var app = function(app) {
             // we need to handle permanetly deleting in the setItem()
 
             p.mosaic.removeAllChildren();
-            p.content2.removeChildAt(0);
+            p.content2.removeChild(p.pic);
             //p.content2.visible = false;
             p.loader.addTo(stage);
 

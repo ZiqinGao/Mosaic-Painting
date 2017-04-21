@@ -247,9 +247,9 @@ var app = function(app) {
                 p.brush = custom4;
             });
 
-
-
-
+///////the mask 
+        var mask = p.mask = new zim.Rectangle(100,100, "red").addTo(content2).alp(0);
+       // mosaic.setMask(mask);
 
         // LAYOUT
         // holder, regions, lastMargin, backgroundColor,
