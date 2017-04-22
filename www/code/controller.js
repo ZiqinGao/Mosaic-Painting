@@ -112,10 +112,10 @@ var app = function(app) {
         	});
 
 
-        pic.on("pressup", function(){
-            p.mosaic.cache(0, 0, stageW, stageH);  
+        // pic.on("pressup", function(){
+        //     p.mosaic.cache(0, 0, stageW, stageH);  
 
-        });
+        // });
 
 
 
